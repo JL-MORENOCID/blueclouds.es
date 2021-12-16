@@ -19,6 +19,8 @@ import {
   SocialLink,
 } from '@mui-treasury/components/socialLink'
 
+import logo from '../logo.png'
+
 import { useMoonSocialLinkStyles } from '@mui-treasury/styles/socialLink/moon'
 import { useBootstrapEmailSubscribeStyles } from '@mui-treasury/styles/emailSubscribe/bootstrap'
 import { usePlainNavigationMenuStyles } from '@mui-treasury/styles/navigationMenu/plain'
@@ -48,6 +50,9 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
   },
   navMenu: {
     flexWrap: 'wrap',
+  },
+  logo: {
+    maxWidth: 64
   }
 }))
 
@@ -61,11 +66,11 @@ const Footer = React.memo(function Footer() {
             <Item grow={2}>
               <Row alignItems={'center'}>
                 <Item color={'#007bff'} fontSize={64} lineHeight={0}>
-                  <Widgets fontSize={'inherit'} color={'inherit'} />
+                  <img src={logo} alt="BlueClouds.es Logo" className={classes.logo} />
                 </Item>
                 <Item>
                   <Typography variant={'h6'} color={'textSecondary'}>
-                    Your Logo
+                    BlueClouds.es
                   </Typography>
                 </Item>
               </Row>
@@ -138,7 +143,7 @@ const Footer = React.memo(function Footer() {
                   variant={'caption'}
                   color={'textSecondary'}
                 >
-                  Designed by Anonymous © Fake Studio 2020 All right reserved
+                  Designed by JMC © BlueClouds {new Date().getFullYear()} All right reserved
                 </Typography>
               </Box>
             </Item>

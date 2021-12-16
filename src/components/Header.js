@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, {useState} from 'react'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -11,13 +11,25 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
+import Slide from '@mui/material/Slide'
+import { makeStyles } from '@material-ui/core/styles'
+import logo from '../logo.png'
+import useScroll from '../hooks/useScroll'
+
+const useStyles = makeStyles({
+  logo: {
+    maxWidth: 64
+  }
+})
 
 const pages = ['Products', 'Pricing', 'Blog']
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
 const Header = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null)
-  const [anchorElUser, setAnchorElUser] = React.useState(null)
+  const classes = useStyles()
+  const [anchorElNav, setAnchorElNav] = useState(null)
+  const [anchorElUser, setAnchorElUser] = useState(null)
+  const navbar = useScroll()
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
@@ -25,17 +37,16 @@ const Header = () => {
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget)
   }
-
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
   }
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
 
   return (
-    <AppBar position="static">
+    <Slide in={navbar.show} mountOnEnter unmountOnExit sx={{ color: "red" }}>
+    <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -44,7 +55,7 @@ const Header = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            LOGO
+            <img src={logo} alt="BlueClouds.es Logo" className={classes.logo} />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -89,7 +100,7 @@ const Header = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            LOGO
+            <img src={logo} alt="BlueClouds.es Logo" className={classes.logo} />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -135,6 +146,7 @@ const Header = () => {
         </Toolbar>
       </Container>
     </AppBar>
+    </Slide>
   )
 }
 export default Header

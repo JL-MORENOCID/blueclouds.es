@@ -1,9 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import ParallaxCarousel from './components/ParallaxCarousel';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles'
+import logo from './logo.svg'
+import './App.css'
+import ParallaxCarousel from './components/ParallaxCarousel'
+
+const theme = createTheme()
 
 function App() {
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -23,6 +27,7 @@ function App() {
 
       <ParallaxCarousel />
     </div>
+    </ThemeProvider>
   )
 }
 

@@ -1,13 +1,13 @@
-import React from 'react';
-import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import ParallaxSlide from '@mui-treasury/components/slide/parallax';
-import DotIndicator from '@mui-treasury/components/indicator/dot';
-import { useArrowDarkButtonStyles } from '@mui-treasury/styles/button/arrowDark';
+import React from 'react'
+import cx from 'clsx'
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
+import ParallaxSlide from '@mui-treasury/components/slide/parallax'
+import DotIndicator from '@mui-treasury/components/indicator/dot'
+import { useArrowDarkButtonStyles } from '@mui-treasury/styles/button/arrowDark'
 
 const data = [
   {
@@ -34,18 +34,16 @@ const data = [
       // eslint-disable-next-line max-len
       'https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fshoes%2Fair-max-deluxe.png?alt=media',
   },
-];
+]
 
 const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
   root: {
-    // a must if you want to set arrows, indicator as absolute
     position: 'relative',
     width: '100%',
   },
   slide: {
-    perspective: 1000, // create perspective
+    perspective: 1200,
     overflow: 'hidden',
-    // relative is a must if you want to create overlapping layers in children
     position: 'relative',
     paddingTop: spacing(8),
     [breakpoints.up('sm')]: {
@@ -95,7 +93,6 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
     },
   },
   text: {
-    // shared style for text-top and text-bottom
     fontFamily: 'Poppins, san-serif',
     fontWeight: 900,
     position: 'absolute',
@@ -146,18 +143,18 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
   indicatorContainer: {
     textAlign: 'center',
   },
-}));
+}))
 
 const ParallaxCarousel = () => {
-  const classes = useStyles();
-  const arrowStyles = useArrowDarkButtonStyles();
+  const classes = useStyles()
+  const arrowStyles = useArrowDarkButtonStyles()
   const createStyle = (slideIndex, fineIndex) => {
     const diff = slideIndex - fineIndex;
     if (Math.abs(diff) > 1) return {};
     return {
       transform: `rotateY(${(-diff + 1) * 45}deg)`,
-    };
-  };
+    }
+  }
   // eslint-disable-next-line react/prop-types
   const renderElements = ({ index, onChangeIndex }) => (
     <>
@@ -220,4 +217,4 @@ const ParallaxCarousel = () => {
 };
 
 
-export default ParallaxCarousel;
+export default ParallaxCarousel
